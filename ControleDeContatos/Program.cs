@@ -3,12 +3,14 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// public IConfiguration Configuration {  get; }
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-// builder.Services.AddEntityFrameworkSqlServer()
-//    .AddDbContext<BancoContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
+
+var provider = builder.Services.BuildServiceProvider();
+var configuration = provider.GetRequiredService<IConfiguration>();
+
+builder.Services.AddEntityFrameworkSqlServer()
+    .AddDbContext<BancoContext>(o => o.UseSqlServer(configuration.GetConnectionString("DataBase")));
 
 var app = builder.Build();
 
