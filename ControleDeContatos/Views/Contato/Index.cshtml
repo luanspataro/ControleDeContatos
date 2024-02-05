@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<ContatoModel>
+@{
     ViewData["Title"] = "Listagem de contatos";
 }
 
@@ -22,42 +23,24 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Marcos</td>
-                <td>marcos@gmail.com</td>
-                <td>13 92094-3102</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary" asp-controller="Contato" asp-action="Editar">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Contato" asp-action="ApagarConfirmacao">Apagar</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Anderson</td>
-                <td>anderson@gmail.com</td>
-                <td>13 92345-3285</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary" asp-controller="Contato" asp-action="Editar">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Contato" asp-action="ApagarConfirmacao">Apagar</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Arlindo</td>
-                <td>arlindo@gmail.com</td>
-                <td>13 90045-3224</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary" asp-controller="Contato" asp-action="Editar">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Contato" asp-action="ApagarConfirmacao">Apagar</a>
-                    </div>
-                </td>
-            </tr>
+            @if(Model != null && Model.Any())
+            {
+                foreach (ContatoModel contato in Model)
+                {
+                    <tr>
+                        <th scope="row">@contato.Id</th>
+                        <td>@contato.Nome</td>
+                        <td>@contato.Email</td>
+                        <td>@contato.Celular</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-route-id="@contato.Id" asp-controller="Contato" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@contato.Id" asp-controller="Contato" asp-action="ApagarConfirmacao">Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
 </div>

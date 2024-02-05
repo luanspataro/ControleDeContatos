@@ -1,4 +1,5 @@
 using ControleDeContatos.Data;
+using ControleDeContatos.Repositorio;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ var configuration = provider.GetRequiredService<IConfiguration>();
 
 builder.Services.AddEntityFrameworkSqlServer()
     .AddDbContext<BancoContext>(o => o.UseSqlServer(configuration.GetConnectionString("DataBase")));
+builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
 
 var app = builder.Build();
 
