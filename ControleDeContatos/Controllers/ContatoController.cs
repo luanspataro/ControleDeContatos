@@ -16,6 +16,7 @@ namespace ControleDeContatos.Controllers
         public IActionResult Index()
         {
             List<ContatoModel> contatos = _contatoRepositorio.BuscarTodos();
+
             return View(contatos);
         }
 

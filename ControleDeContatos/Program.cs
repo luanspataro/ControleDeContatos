@@ -13,6 +13,7 @@ var configuration = provider.GetRequiredService<IConfiguration>();
 builder.Services.AddEntityFrameworkSqlServer()
     .AddDbContext<BancoContext>(o => o.UseSqlServer(configuration.GetConnectionString("DataBase")));
 builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
 var app = builder.Build();
 
