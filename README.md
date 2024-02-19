@@ -1,5 +1,7 @@
 # Controle de Contatos - CRUD em C# com Arquitetura MVC e Banco de Dados SQL Server
 
+![Imagem da Tela de Contatos](https://github.com/luanspataro/ControleDeContatos/assets/132790540/f74582a5-d66b-4a49-b442-8ca5cbba3082)
+
 Este é um projeto de controle de contatos desenvolvido em C# utilizando a arquitetura MVC (Model-View-Controller) e integrado com um banco de dados SQL Server. O objetivo deste projeto é fornecer uma aplicação para gerenciar contatos, permitindo a criação, edição e exclusão de registros.
 
 ## Pacotes .NET Utilizados
